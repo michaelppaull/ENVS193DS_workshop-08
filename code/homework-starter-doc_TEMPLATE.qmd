@@ -8,23 +8,23 @@ execute: # for all code chunks
     message: false # do not display messages
 ---
 
-**WARNING:** this document provides the foundation for your homework 3, but you will need to create your own neat, organized document to render for your homework submission. Create a new document for your homework in the `code` folder of this repository.   
+**WARNING:** this document provides the foundation for your homework 3, but you will need to create your own neat, organized document to render for your homework submission. Create a new document for your homework in the `code` folder of this repository.
 
-**You will not need all the information in this document to do your homework; IT IS YOUR JOB TO EDIT THE INFORMATION IN YOUR HOMEWORK DOCUMENT TO ONLY INCLUDE WHAT IS NECESSARY.**    
+**You will not need all the information in this document to do your homework; IT IS YOUR JOB TO EDIT THE INFORMATION IN YOUR HOMEWORK DOCUMENT TO ONLY INCLUDE WHAT IS NECESSARY.**
 
-**Relevant definitions:**  
+**Relevant definitions:**
 
-specific leaf area (SLA, units: mm^2^/g): surface area of a leaf divided by its dry mass, represents life strategy (high SLA = large surface area and low mass = "fast" species)  
+specific leaf area (SLA, units: mm^2^/g): surface area of a leaf divided by its dry mass, represents life strategy (high SLA = large surface area and low mass = "fast" species)
 
-root mass (units: g): mass of root tissue  
+root mass (units: g): mass of root tissue
 
-shoot mass (units: g): mass of aboveground tissue  
+shoot mass (units: g): mass of aboveground tissue
 
 # Set up
 
 ## reading in packages
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # general use
 library(tidyverse)
 library(readxl)
@@ -79,7 +79,7 @@ drought_exp_clean <- drought_exp %>%
 
 # Visualizing
 
-## correlations 
+## correlations
 
 ```{r}
 ggpairs(drought_exp_clean, # data frame
@@ -91,23 +91,30 @@ ggpairs(drought_exp_clean, # data frame
         upper = list(method = "pearson")) + # calculating Pearson correlation coefficient
   theme_bw() + # cleaner theme
   theme(panel.grid = element_blank()) # getting rid of gridlines
+
+# diagonal showws distribution of variables
+# lower left is a scatter plot helping explore the correlation with data
+# upper right shoes the correlation coefficients
+
+
+# 
 ```
 
-Choose 3 pairs of variables to compare. Make notes of those comparisons below.    
+Choose 3 pairs of variables to compare. Make notes of those comparisons below.
 
-**insert comparison 1 here**  
+**shoot mass is strongly positively correlated with total mass with a correlation coefficient of 0.902**
 
-**insert comparison 2 here**  
+**SLA and leaf dry weight are weakly correlated with a correlation coefficient of 0.033**
 
-**insert comparison 3 here**
+**root mass and total mass are strongly correlated with a correlatio coefficient of 0.858**
 
-## Preliminary visualizations  
+## Preliminary visualizations
 
-If you aren't familiar with each plant species, google them!  
+If you aren't familiar with each plant species, google them!
 
-Then go exploring! Visually.  
+Then go exploring! Visually.
 
-In this scenario, we're interested in how three variables affect total biomass: species (categorical), water treatment (categorical), specific leaf area (SLA, numeric).  
+In this scenario, we're interested in how three variables affect total biomass: species (categorical), water treatment (categorical), specific leaf area (SLA, numeric).
 
 **Note:** it is totally ok (and encouraged) to explore these separately!
 
@@ -123,7 +130,7 @@ ggplot(data = drought_exp_clean, # data frame
               height = 0) # not jittering points up and down
 ```
 
-**response here**
+**Some species have a higher total mass while some have lower. Grindelila seems to have the highest biomass, while the one called glaber has the lowest. **
 
 ### how does total biomass differ between water treatments?
 
@@ -135,7 +142,7 @@ ggplot(data = drought_exp_clean, # data frame
               height = 0) # not jittering points up and down
 ```
 
-**response here**
+**It looks like well watered plants have more total mass. Total biomass is greater when plants are well watered.**
 
 ### how does specific leaf area (SLA) influence total biomass?
 
@@ -146,26 +153,26 @@ ggplot(data = drought_exp_clean, # data frame
   geom_point() # scatterplot
 ```
 
-**response here**
+**There seems to be a slight positive correlation but its quite weak. Moderate-strong correlation depending on how you round.**
 
 # Model construction
 
-What is the null model?  
+What is the null model?
 
-0. **null model here**  
+0.  **null model here**
 
-What is the saturated model?  
+What is the saturated model?
 
-1. **saturated model here**  
+1.  **saturated model here**
 
-In class we are going to try two more models:  
+In class we are going to try two more models:
 
-2.  **total biomass as a function of SLA and water treatment**  
-3.  **total biomass as a function of SLA and species**  
+2.  **total biomass as a function of SLA and water treatment**\
+3.  **total biomass as a function of SLA and species**
 
-For homework, you will construct one more model:  
+For homework, you will construct one more model:
 
-4. **total biomass as a function of water treatment and species**  
+4.  **total biomass as a function of water treatment and species**
 
 You will then compare all 5 models to determine which best describes total biomass. **For your homework, you will need to create a table summarizing the structure of these models.**
 
@@ -217,7 +224,7 @@ model.sel(model0,
           model3)
 ```
 
-Out of the four models we have tried, the best model is the one that includes **insert predictors here**  
+Out of the four models we have tried, the best model is the one that includes **insert predictors here**
 
 Note that this may change once you fit and compare the other model!
 
@@ -227,21 +234,21 @@ Note that this may change once you fit and compare the other model!
 summary(model1)
 ```
 
-What are the reference levels?  
+What are the reference levels?
 
-- reference for `water_treatment`  
-- reference for `species_name`  
+-   reference for `water_treatment`\
+-   reference for `species_name`
 
-**reference for water_treatment:** **insert response here**  
-**reference for species_name:** **insert response here**  
+**reference for water_treatment:** **insert response here**\
+**reference for species_name:** **insert response here**
 
-Interpret the model estimates for the:  
+Interpret the model estimates for the:
 
-- intercept: **insert response here**  
-- SLA slope: **insert response here**  
-- well watered estimate: **insert response here**    
-- Lotus scoparius estimate: **insert response here**    
-- Stipa pulchra estimate: **insert response here**    
+-   intercept: **insert response here**\
+-   SLA slope: **insert response here**\
+-   well watered estimate: **insert response here**\
+-   Lotus scoparius estimate: **insert response here**\
+-   Stipa pulchra estimate: **insert response here**
 
 # Model predictions
 
@@ -259,7 +266,7 @@ model_preds <- ggpredict(model1,
 
 # Visualization
 
-**Note:** this is the quick way to visualize model predictions. For your homework, you may find it easier to plot things yourself (i.e. not using the `plot()` functionality within `ggeffects`). See lecture for an example of how to do this.  
+**Note:** this is the quick way to visualize model predictions. For your homework, you may find it easier to plot things yourself (i.e. not using the `plot()` functionality within `ggeffects`). See lecture for an example of how to do this.
 
 ```{r}
 # plot function within ggeffects
@@ -309,7 +316,6 @@ ggplot() +
   facet_wrap(~species_name) 
 ```
 
-
 # Making a table
 
 ```{r}
@@ -334,4 +340,3 @@ modelsummary::modelsummary( # this function takes a list of models
 **Note 1: notice all the information at the bottom of the `modelsummary` output - if you only needed the AIC and delta AIC, what could you do? see package documentation for help**
 
 **Note 2: you will always have to report the F-statistic, degrees of freedom, test statistic, p-value, ⍺, and R^2^. Whether or not this information is in a table is up to you.**
-
