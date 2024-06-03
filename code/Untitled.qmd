@@ -171,6 +171,9 @@ drought_exp_clean %>%
     axis.text.x = element_text(angle = 45, hjust = 1) # angle x-axis for easier reading
   )
 ```
-
+#### Results
+The predictors that best described total biomass were water treatment and species, as indicated by Model 4, which had the lowest AIC (-159), lowest BIC (-138), and highest adjusted R-squared (0.725) among the models tested. On average, well-watered plants exhibited significantly higher total biomass compared to drought-stressed plants, highlighting the substantial impact of water availability on plant growth. Additionally, significant differences were observed between species, with some species showing higher resilience and greater biomass under varying water treatments compared to others, demonstrating species-specific responses to water stress.
+### Problem II
+#### Affective Visualization
 
 
