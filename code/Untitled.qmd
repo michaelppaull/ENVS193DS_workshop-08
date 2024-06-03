@@ -21,8 +21,6 @@ library(tidyverse)
 library(readxl)
 library(here)
 library(janitor)
-library(ggplot2)
-library(dplyr)
 
 # visualizing pairs
 library(GGally)
@@ -139,12 +137,11 @@ To examine the influence of SLA (Specific Leaf Area), water treatment, and speci
 
 4.  A model with water treatment and species as predictors.
 
-To determine the model that best described the total biomass, I compared these models using the Akaike Information Criterion (AIC), Bayesian Information Criterion (BIC), and adjusted R-squared values. The comparison showed that Model 4, which includes water treatment and species as predictors, had the lowest AIC (-159.19595) and BIC (-138.95950) values and the highest adjusted R-squared (0.7257045) among the models tested. Therefore, Model 4 was selected as the best predictor model for total biomass.
+To determine the model that best described the total biomass, I compared these models using the Akaike Information Criterion (AIC), Bayesian Information Criterion (BIC), and adjusted R-squared values. The comparison showed that Model 4, which includes water treatment and species as predictors, had the lowest AIC (-159.19595) and BIC (-138.95950) values and the highest adjusted R-squared (0.72570) among the models tested. Therefore, Model 4 was selected as the best predictor model for total biomass.
 
 To evaluate whether Model 4 conformed to the assumptions of a linear model, I examined diagnostic plots. The residuals vs. fitted values plot indicated that the residuals were randomly scattered around zero, suggesting linearity. The Normal Q-Q plot showed that the residuals were approximately normally distributed. The Scale-Location plot indicated homoscedasticity, as the spread of residuals was roughly constant across all levels of fitted values. Finally, the residuals vs. leverage plot did not reveal any points with excessively high leverage or influence, indicating that no single observation unduly affected the model.
 
 Based on this analysis, Model 4, which includes water treatment and species, provides the best description of the influence of these factors on total biomass.
-
 #### Visualize "Best" Model
 ```{r}
 # Create a data frame with predictions
@@ -162,18 +159,15 @@ drought_exp_clean %>%
     x = "Water Treatment",
     y = "Total Biomass (g)"
   ) +
-  scale_color_manual(values = c("Drought stressed" = "#FFD39B", # color choice for drought stressed
-                                "Well watered" = "#6aa84f")) + # color choice for watered
+  scale_color_manual(values = c("Drought stressed" = "#FFD39B", 
+                                "Well watered" = "#6aa84f")) +
   theme_minimal() +
   theme(
     legend.position = "none",  # Remove legend
-    strip.text = element_text(size = 10, face = "bold"), # adjust species name size
-    axis.text.x = element_text(angle = 45, hjust = 1) # angle x-axis for easier reading
+    strip.text = element_text(size = 10, face = "bold"),
+    axis.text.x = element_text(angle = 45, hjust = 1)
   )
 ```
 #### Results
 The predictors that best described total biomass were water treatment and species, as indicated by Model 4, which had the lowest AIC (-159), lowest BIC (-138), and highest adjusted R-squared (0.725) among the models tested. On average, well-watered plants exhibited significantly higher total biomass compared to drought-stressed plants, highlighting the substantial impact of water availability on plant growth. Additionally, significant differences were observed between species, with some species showing higher resilience and greater biomass under varying water treatments compared to others, demonstrating species-specific responses to water stress.
-### Problem II
-#### Affective Visualization
-
 
