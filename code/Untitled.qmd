@@ -67,7 +67,7 @@ drought_exp_clean <- drought_exp %>%
 
 # Problems
 
-### Problem I Multiple Linear Regression: Model Selection and Construction
+### Problem I: Multiple Linear Regression: Model Selection and Construction
 
 #### Define Models
 
@@ -171,9 +171,15 @@ drought_exp_clean %>%
   )
 ```
 
-#### Results
+#### Results:
 
-The predictors that best described total biomass were water treatment and species, as indicated by Model 4, which had the lowest AIC (-159), lowest BIC (-138), and highest adjusted R-squared (0.725) among the models tested. On average, well-watered plants exhibited significantly higher total biomass compared to drought-stressed plants, highlighting the substantial impact of water availability on plant growth. Additionally, significant differences were observed between species, with some species showing higher resilience and greater biomass under varying water treatments compared to others, demonstrating species-specific responses to water stress. \## Problem II Affective Visualization \#### A. Description Taking inspiration from Dear Data, by Giorgia Lupi and Stefanie Posavec, I thought about generating a fun postcard type visualization that used colors and shapes to describe my different data points. Im thinking of creating a little figure that uses colors to distinguishing between the different ratings for morning mood, productivity, and overall mood. Then additionally shapes fil in the ratings for the colors that give information about if I ate breakfast or had coffee that day. Then a final shape that describes how many hours of sleep I got the night before. I think this will be visually appealing and will allow the reader to easily see trends in the data and how sleep may affect some of the other variables.
+The predictors that best described total biomass were water treatment and species, as indicated by Model 4, which had the lowest AIC (-159), lowest BIC (-138), and highest adjusted R-squared (0.725) among the models tested. On average, well-watered plants exhibited significantly higher total biomass compared to drought-stressed plants, highlighting the substantial impact of water availability on plant growth. Additionally, significant differences were observed between species, with some species showing higher resilience and greater biomass under varying water treatments compared to others, demonstrating species-specific responses to water stress. 
+
+## Problem II: Affective Visualization 
+
+#### A. Description:
+
+Taking inspiration from Dear Data, by Giorgia Lupi and Stefanie Posavec, I thought about generating a fun postcard type visualization that used colors and shapes to describe my different data points. Im thinking of creating a little figure that uses colors to distinguishing between the different ratings for morning mood, productivity, and overall mood. Then additionally shapes fil in the ratings for the colors that give information about if I ate breakfast or had coffee that day. Then a final shape that describes how many hours of sleep I got the night before. I think this will be visually appealing and will allow the reader to easily see trends in the data and how sleep may affect some of the other variables.
 
 #### B. Create A Sketch
 
@@ -182,3 +188,26 @@ The predictors that best described total biomass were water treatment and specie
 #### C. Draft Visualization
 
 ![Visualization](images/viz_full.png)
+
+#### D. Artist Statement
+the content of your piece (what are you showing?)
+the influences (what did techniques/artists/etc. did you find influential in creating your work?)
+the form of your work (written code, watercolor, oil painting, etc.)
+your process (how did you create your work?)
+
+Taking inspiration from Dear Data, by Giorgia Lupi and Stefanie Posavec, I created a "data postcard" that I feel encapsulates my data in a clean, clear, and concise way. I utilized a system of colors and shapes with along with a guide on how to read the data. Each data point represents one day as well as my chosen parameters for that day. I used high opacity paint markers and pen where each color distinguished different columns and the shapes defined by combinations of the Boolean data that is associated with each data point. I also utilized the tic-tac-toe grid that I once used to create my own "alien language" as a child to define numbers 1-9 for my hours of sleep.
+
+## Problem III: Statistical Critique
+
+
+
+
+
+
+
+
+
+
+
+
+
