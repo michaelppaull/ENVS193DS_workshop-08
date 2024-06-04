@@ -130,7 +130,7 @@ ggplot(data = drought_exp_clean, # data frame
               height = 0) # not jittering points up and down
 ```
 
-**Some species have a higher total mass while some have lower. Grindelila seems to have the highest biomass, while the one called glaber has the lowest. **
+**Some species have a higher total mass while some have lower. Grindelila seems to have the highest biomass, while the one called glaber has the lowest.**
 
 ### how does total biomass differ between water treatments?
 

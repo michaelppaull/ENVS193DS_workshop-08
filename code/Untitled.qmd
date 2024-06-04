@@ -67,7 +67,7 @@ drought_exp_clean <- drought_exp %>%
 
 # Problems
 
-### Problem I
+### Problem I Multiple Linear Regression: Model Selection and Construction
 
 #### Define Models
 
@@ -126,7 +126,9 @@ caption <- "Table 1: Model Comparison Based on AIC, BIC, and Adjusted R-Squared 
 ft <- set_caption(ft, caption)
 ft
 ```
+
 #### Statistical Methods
+
 To examine the influence of SLA (Specific Leaf Area), water treatment, and species on total biomass, I fitted several linear regression models using the lm function in R. Specifically, I compared four models against the null:
 
 1.  A model with SLA, water treatment, and species as predictors.
@@ -141,33 +143,42 @@ To determine the model that best described the total biomass, I compared these m
 
 To evaluate whether Model 4 conformed to the assumptions of a linear model, I examined diagnostic plots. The residuals vs. fitted values plot indicated that the residuals were randomly scattered around zero, suggesting linearity. The Normal Q-Q plot showed that the residuals were approximately normally distributed. The Scale-Location plot indicated homoscedasticity, as the spread of residuals was roughly constant across all levels of fitted values. Finally, the residuals vs. leverage plot did not reveal any points with excessively high leverage or influence, indicating that no single observation unduly affected the model.
 
-Based on this analysis, Model 4, which includes water treatment and species, provides the best description of the influence of these factors on total biomass.
-#### Visualize "Best" Model
+Based on this analysis, Model 4, which includes water treatment and species, provides the best description of the influence of these factors on total biomass. \#### Visualize "Best" Model
+
 ```{r}
 # Create a data frame with predictions
-drought_exp_clean$predicted <- predict(model4, drought_exp_clean)
+drought_exp_clean$predicted <- predict(model4, drought_exp_clean) 
 
 # generate the plot
 drought_exp_clean %>% 
-  ggplot(aes(x = water_treatment,
-             y = total_g)) +
-  geom_jitter(aes(color = water_treatment), alpha = 0.3, width = 0.2) +  # Jittered underlying data points
-  geom_point(aes(y = predicted, color = water_treatment), size = 2) +
+  ggplot(aes(x = water_treatment, # define x-axis
+             y = total_g)) + # define y axis
+  geom_jitter(aes(color = water_treatment), alpha = 0.3, width = 0.2) +  # jittered underlying data points
+  geom_point(aes(y = predicted, color = water_treatment), size = 2) + # plot model 4 predictions
   facet_wrap(~ species_name) + # facet by species
   labs(
-    title = "Model Predictions vs. Actual Data",
-    x = "Water Treatment",
-    y = "Total Biomass (g)"
+    title = "Model Predictions vs. Actual Data", # title for plot
+    x = "Water Treatment", # label x-axis
+    y = "Total Biomass (g)" # label y-axis
   ) +
-  scale_color_manual(values = c("Drought stressed" = "#FFD39B", 
-                                "Well watered" = "#6aa84f")) +
-  theme_minimal() +
+  scale_color_manual(values = c("Drought stressed" = "#FFD39B", # brown dried out color to drought stressed
+                                "Well watered" = "#6aa84f")) + # green lush color for well watered
+  theme_minimal() + # change theme 
   theme(
     legend.position = "none",  # Remove legend
-    strip.text = element_text(size = 10, face = "bold"),
-    axis.text.x = element_text(angle = 45, hjust = 1)
+    strip.text = element_text(size = 10, face = "bold"), # change size of species names and make bold
+    axis.text.x = element_text(angle = 45, hjust = 1) # angle treatment so that its easy to read
   )
 ```
-#### Results
-The predictors that best described total biomass were water treatment and species, as indicated by Model 4, which had the lowest AIC (-159), lowest BIC (-138), and highest adjusted R-squared (0.725) among the models tested. On average, well-watered plants exhibited significantly higher total biomass compared to drought-stressed plants, highlighting the substantial impact of water availability on plant growth. Additionally, significant differences were observed between species, with some species showing higher resilience and greater biomass under varying water treatments compared to others, demonstrating species-specific responses to water stress.
 
+#### Results
+
+The predictors that best described total biomass were water treatment and species, as indicated by Model 4, which had the lowest AIC (-159), lowest BIC (-138), and highest adjusted R-squared (0.725) among the models tested. On average, well-watered plants exhibited significantly higher total biomass compared to drought-stressed plants, highlighting the substantial impact of water availability on plant growth. Additionally, significant differences were observed between species, with some species showing higher resilience and greater biomass under varying water treatments compared to others, demonstrating species-specific responses to water stress. \## Problem II Affective Visualization \#### A. Description Taking inspiration from Dear Data, by Giorgia Lupi and Stefanie Posavec, I thought about generating a fun postcard type visualization that used colors and shapes to describe my different data points. Im thinking of creating a little figure that uses colors to distinguishing between the different ratings for morning mood, productivity, and overall mood. Then additionally shapes fil in the ratings for the colors that give information about if I ate breakfast or had coffee that day. Then a final shape that describes how many hours of sleep I got the night before. I think this will be visually appealing and will allow the reader to easily see trends in the data and how sleep may affect some of the other variables.
+
+#### B. Create A Sketch
+
+![Sketch](images/viz_sketch.png)
+
+#### C. Draft Visualization
+
+![Visualization](images/viz_full.png)
